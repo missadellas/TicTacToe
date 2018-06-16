@@ -9,9 +9,41 @@ import android.widget.Button;
 public class GameManager {
     int numWins=0;
     int numLoss=0;
-    int gridSize=3;
+
+    public boolean isP1Turn() {
+        return p1Turn;
+    }
+
+    public void setP1Turn(boolean p1Turn) {
+        this.p1Turn = p1Turn;
+    }
+
+    boolean p1Turn = true;
+
+    public int getTurncount() {
+        return turncount;
+    }
+
+    public void incrementTurn() {
+        turncount++;
+    }
+
+    int turncount=0;
+
+    public boolean isRematch() {
+        return rematch;
+    }
+
+    public void setRematch(boolean rematch) {
+        this.rematch = rematch;
+    }
+
+    boolean rematch = true;
 
     public GameManager() {
+        numWins=0;
+        numLoss=0;
+        turncount=0;
     }
 
     public int getNumWins() {
@@ -45,8 +77,6 @@ public class GameManager {
                 buttonText[i][j] = board[i][j].getText().toString();
             }
         }
-
-
         //check rows
         for (int i = 0; i < board.length; i++) {
             match=true;
@@ -97,7 +127,15 @@ public class GameManager {
         }
         return false;
     }
-
+    public void rematch(Button[][] board){
+        turncount=-1;
+        for(int i=0;i<board.length;i++){
+            for(int j=0;j<board.length;j++){
+                board[i][j].setText("");
+                board[i][j].setEnabled(true);
+            }
+        }
+    }
 
 
 }
