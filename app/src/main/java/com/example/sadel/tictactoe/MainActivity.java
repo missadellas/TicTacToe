@@ -3,7 +3,6 @@ package com.example.sadel.tictactoe;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
@@ -27,7 +26,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 int resourceID = getResources().getIdentifier(buttonID,"id",getPackageName());
                 board[i][j] = findViewById(resourceID);
                 board[i][j].setOnClickListener(this);
-                Log.d("Sam", ""+board.length);
 
             }
         }
@@ -57,6 +55,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         p2.setText("Player2: 0");
         gm.rematch(board);
         gm = new GameManager();
+        p1.setTextColor(0xffcc0000);
+        p2.setTextColor(0xffffffff);
+
     }
 
 
@@ -102,7 +103,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
     Toast toast;
     public void  xWins() {
-        toast= Toast.makeText(getApplicationContext(), "Player1 Wins!", Toast.LENGTH_LONG);
+        toast= Toast.makeText(getApplicationContext(), "Player1 Wins!", Toast.LENGTH_SHORT);
         toast.setGravity(Gravity.CENTER_HORIZONTAL, 0, 390);
         toast.show();
         TextView p1 = findViewById(R.id.player1);
@@ -113,7 +114,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
     public void oWins(){
         TextView p2 = findViewById(R.id.player2);
-        toast= Toast.makeText(getApplicationContext(), "Player2 Wins!", Toast.LENGTH_LONG);
+        toast= Toast.makeText(getApplicationContext(), "Player2 Wins!", Toast.LENGTH_SHORT);
         toast.setGravity(Gravity.CENTER_HORIZONTAL, 0, 350);
         toast.show();
         gm.addLoss();
@@ -123,19 +124,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
     public void draw(){
-        toast= Toast.makeText(getApplicationContext(), "Tie!", Toast.LENGTH_LONG);
+        toast= Toast.makeText(getApplicationContext(), "Tie!", Toast.LENGTH_SHORT);
         toast.setGravity(Gravity.CENTER_HORIZONTAL, 0, 350);
         toast.show();
         gm.rematch(board);
 
     }
-/*
-    @Override
-    protected void onSavedInstanceState(Bundle outState){
-        super.onSaveInstanceState(outState);
 
 
-
-    }
-*/
 }

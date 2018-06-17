@@ -30,15 +30,6 @@ public class GameManager {
 
     int turncount=0;
 
-    public boolean isRematch() {
-        return rematch;
-    }
-
-    public void setRematch(boolean rematch) {
-        this.rematch = rematch;
-    }
-
-    boolean rematch = true;
 
     public GameManager() {
         numWins=0;
@@ -50,16 +41,9 @@ public class GameManager {
         return numWins;
     }
 
-    public void setNumWins(int numWins) {
-        this.numWins = numWins;
-    }
 
     public int getNumLoss() {
         return numLoss;
-    }
-
-    public void setNumLoss(int numLoss) {
-        this.numLoss = numLoss;
     }
 
     public void addWin(){
